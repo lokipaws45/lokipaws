@@ -1,3 +1,2 @@
 # Loki Paws
-
-A modern e-commerce site for cat lovers, built with Vite + Firebase.
+A cat accessory e-commerce app powered by React, Firebase, and EmailJS.
