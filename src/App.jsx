@@ -1,0 +1,1 @@
+export default function App() { return <h1>Welcome to Loki Paws 🐾</h1>; }
