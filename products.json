@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Cat Tunnel",
+    "category": "Toys",
+    "price": 890,
+    "stock": "In Stock",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 2,
+    "title": "Cat Tree",
+    "category": "Furniture",
+    "price": 2400,
+    "stock": "In Stock",
+    "image": "https://via.placeholder.com/150"
+  }
+]
