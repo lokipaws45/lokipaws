@@ -1,2 +1,3 @@
 # Loki Paws
-A modern pet accessories site for cats. Built with React, Firebase & EmailJS.
+
+A pet shop e-commerce site with Firebase Authentication.
