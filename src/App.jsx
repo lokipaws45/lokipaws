@@ -1,31 +1,39 @@
-import { Link } from 'react-router-dom';
+
+import React, { useState } from "react";
+import ProductCard from "./components/ProductCard";
+import ProductForm from "./components/ProductForm";
+import "./App.css";
 
 export default function App() {
-  const products = JSON.parse(localStorage.getItem('lokiProducts') || '[]');
+  const [products, setProducts] = useState([]);
+  const [editingIndex, setEditingIndex] = useState(null);
+
+  const handleAddOrUpdate = (product) => {
+    if (editingIndex !== null) {
+      const updated = [...products];
+      updated[editingIndex] = product;
+      setProducts(updated);
+      setEditingIndex(null);
+    } else {
+      setProducts([...products, product]);
+    }
+  };
+
+  const handleEdit = (index) => {
+    setEditingIndex(index);
+  };
+
   return (
-    <div style={{ padding: '2rem' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1 style={{ fontSize: '2rem' }}>🐾 Loki Paws</h1>
-        <Link to="/login"><button style={{ padding: '0.5rem 1rem', borderRadius: '8px' }}>Admin Login</button></Link>
-      </header>
-      <h2 style={{ marginTop: '2rem' }}>Available Products</h2>
-      <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginTop: '1rem' }}>
-        {products.map((p, i) => (
-          <div key={i} style={{
-            border: '1px solid #ddd',
-            borderRadius: '12px',
-            padding: '1rem',
-            width: '220px',
-            backgroundColor: '#fff',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.05)'
-          }}>
-            <img src={p.image} alt={p.title} style={{ width: '100%', borderRadius: '8px' }} />
-            <h3 style={{ marginTop: '0.5rem' }}>{p.title}</h3>
-            <p>{p.category}</p>
-            <p>MUR {p.price}</p>
-            <p>Qty: {p.quantity}</p>
-            <p style={{ color: p.status === 'In Stock' ? 'green' : 'red' }}>{p.status}</p>
-          </div>
+    <div className="container">
+      <h1 className="logo">🐾 Loki Paws</h1>
+      <ProductForm onSubmit={handleAddOrUpdate} product={products[editingIndex]} />
+      <div className="products-grid">
+        {products.map((product, index) => (
+          <ProductCard
+            key={index}
+            product={product}
+            onEdit={() => handleEdit(index)}
+          />
         ))}
       </div>
     </div>
