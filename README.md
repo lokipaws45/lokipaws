@@ -1,3 +1,2 @@
-# Loki Paws
-
-A pet shop e-commerce site with Firebase Authentication.
+# Loki Paws with Admin Panel
+Product management for your cat shop.
